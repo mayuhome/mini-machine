@@ -17,7 +17,6 @@ async function bootstrap() {
   .setTitle('mini-machine APIs')
   .setDescription('为小程序所做后端api接口')
   .setVersion('1.0')
-  .addTag('machine')
   .build();
 
   const document = SwaggerModule.createDocument(app, options);
