@@ -1,7 +1,7 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-02-28 13:31:00
- * @LastEditTime: 2022-03-01 14:12:36
+ * @LastEditTime: 2022-03-02 14:31:57
  * @LastEditors: Ma Jade
  * @FilePath: /backend/mini-machine/src/app.module.ts
  */
@@ -12,19 +12,13 @@ import { AppService } from './app.service';
 import { MachinesModule } from './machines/machines.module';
 import { Connection } from 'typeorm';
 import { UsersModule } from './users/users.module';
-import { UsersController } from './users/users.controller';
-import { MachinesController } from './machines/machines.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(), 
-     
-    MachinesModule, UsersModule],
-  controllers: [AppController],
+  imports: [TypeOrmModule.forRoot(), MachinesModule, UsersModule, AuthModule],
+  // controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
-  constructor(
-    private readonly connection: Connection
-  ){}
+  constructor(private readonly connection: Connection) {}
 }

@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:41:28
@@ -16,20 +18,28 @@ import { User } from './entities/user.entity';
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>
-  ){}
-  async create(createUserDto: CreateUserDto):Promise<InsertResult> {
+    private userRepository: Repository<User>,
+  ) {}
+  async create(createUserDto: CreateUserDto): Promise<InsertResult> {
     let user = new User();
     Object.assign(user, createUserDto);
     return await this.userRepository.insert(user);
   }
 
-  async findAll() : Promise<User[]>{
+  async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
 
   async findOne(id: string): Promise<User> {
     return await this.userRepository.findOne(id);
+  }
+
+  async findUserByEmail(email: string): Promise<User> {
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .where('user.Email = :email', { email })
+      .getOne();
+    return user;
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

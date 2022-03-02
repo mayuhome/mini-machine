@@ -1,4 +1,4 @@
-import { Column } from "typeorm";
+import { Column } from 'typeorm';
 
 /*
  * @Author: Ma Jade
@@ -7,14 +7,13 @@ import { Column } from "typeorm";
  * @LastEditors: Ma Jade
  * @FilePath: /backend/mini-machine/src/models/base.ts
  */
-export class EntityBase{
-    @Column({default: ''})
-    CreatedBy?: string;
-    @Column({type: 'timestamp', default:() => 'CURRENT_TIMESTAMP'})
-    CreatedTime: Date;
-    @Column({type: 'timestamp', default:() => 'CURRENT_TIMESTAMP'})
-    UpdatedTime: Date;
-    @Column({default: true})
-    IsActive: boolean;
-
+export class EntityBase {
+  @Column({ default: '' })
+  CreatedBy?: string;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  CreatedTime: Date;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  UpdatedTime: Date;
+  @Column({ default: true })
+  IsActive: boolean;
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:12:58
- * @LastEditTime: 2022-03-01 14:13:59
+ * @LastEditTime: 2022-03-02 11:28:53
  * @LastEditors: Ma Jade
  * @FilePath: /backend/mini-machine/src/machines/machines.service.ts
  */
@@ -16,8 +16,8 @@ import { Machine } from './entities/machine.entity';
 export class MachinesService {
   constructor(
     @InjectRepository(Machine)
-    private userRepository: Repository<Machine>
-  ){}
+    private userRepository: Repository<Machine>,
+  ) {}
   create(createMachineDto: CreateMachineDto) {
     return 'This action adds a new machine';
   }

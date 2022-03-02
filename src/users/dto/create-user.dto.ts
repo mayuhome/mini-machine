@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:41:28
