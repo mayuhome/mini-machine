@@ -3,7 +3,7 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:41:28
- * @LastEditTime: 2022-03-01 13:52:43
+ * @LastEditTime: 2022-03-03 11:16:17
  * @LastEditors: Ma Jade
  * @FilePath: /backend/mini-machine/src/users/users.service.ts
  */
@@ -35,6 +35,8 @@ export class UsersService {
   }
 
   async findUserByEmail(email: string): Promise<User> {
+    console.log('email');
+    
     const user = await this.userRepository
       .createQueryBuilder('user')
       .where('user.Email = :email', { email })
