@@ -1,16 +1,23 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-02-28 13:31:00
- * @LastEditTime: 2022-03-03 14:17:22
+ * @LastEditTime: 2022-05-27 23:56:49
  * @LastEditors: Ma Jade
- * @FilePath: /backend/mini-machine/src/main.ts
+ * @FilePath: /mini-machine/src/main.ts
  */
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { HttpExceptionFilter } from './core/filter/http-exception.filter';
+import { TransformInterceptor } from './core/interceptor/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // 注册全局错误的过滤器
+  app.useGlobalFilters(new HttpExceptionFilter());
+  // 注册全局成功拦截器
+  app.useGlobalInterceptors(new TransformInterceptor());
 
   // add swagger module
   const options = new DocumentBuilder()

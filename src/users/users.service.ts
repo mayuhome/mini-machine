@@ -13,36 +13,37 @@ import { InsertResult, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { UsersRepository } from './users.repository';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
+    @InjectRepository(UsersRepository)
+    private userRepository: Repository<UsersRepository>,
   ) {}
-  async create(createUserDto: CreateUserDto): Promise<InsertResult> {
-    let user = new User();
-    Object.assign(user, createUserDto);
-    return await this.userRepository.insert(user);
+  async create(createUserDto: CreateUserDto) {
+    // let user = new User();
+    // Object.assign(user, createUserDto);
+    // return await this.userRepository.insert(user);
   }
 
-  async findAll(): Promise<User[]> {
-    return await this.userRepository.find();
-  }
+  // async findAll(): Promise<User[]> {
+  //   return await this.userRepository.find();
+  // }
 
-  async findOne(id: string): Promise<User> {
-    return await this.userRepository.findOne(id);
-  }
+  // async findOne(id: string): Promise<User> {
+  //   return await this.userRepository.findOne(id);
+  // }
 
-  async findUserByEmail(email: string): Promise<User> {
-    console.log('email');
+  // async findUserByEmail(email: string): Promise<User> {
+  //   console.log('email');
     
-    const user = await this.userRepository
-      .createQueryBuilder('user')
-      .where('user.Email = :email', { email })
-      .getOne();
-    return user;
-  }
+  //   const user = await this.userRepository
+  //     .createQueryBuilder('user')
+  //     .where('user.Email = :email', { email })
+  //     .getOne();
+  //   return user;
+  // }
 
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;

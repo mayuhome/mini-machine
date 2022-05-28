@@ -1,9 +1,9 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:41:28
- * @LastEditTime: 2022-03-02 17:20:24
+ * @LastEditTime: 2022-05-28 23:38:57
  * @LastEditors: Ma Jade
- * @FilePath: /backend/mini-machine/src/users/users.controller.ts
+ * @FilePath: /mini-machine/src/users/users.controller.ts
  */
 import {
   Controller,
@@ -23,7 +23,7 @@ import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('用户信息')
 @ApiBearerAuth()
-@UseGuards(AuthGuard('local'))
+// @UseGuards(AuthGuard('local'))
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -33,20 +33,20 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
-  findAll() {
-    return this.usersService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.usersService.findAll();
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.usersService.findOne(id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  //   return this.usersService.update(+id, updateUserDto);
+  // }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
