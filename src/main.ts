@@ -1,7 +1,7 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-02-28 13:31:00
- * @LastEditTime: 2022-05-27 23:56:49
+ * @LastEditTime: 2022-05-29 23:58:13
  * @LastEditors: Ma Jade
  * @FilePath: /mini-machine/src/main.ts
  */
@@ -22,12 +22,12 @@ async function bootstrap() {
   // add swagger module
   const options = new DocumentBuilder()
     .setContact('jade', '', 'mayuhome@163.com')
-    // .addBearerAuth({ 
-    //   type: 'apiKey',
-    //   name: 'Bearer',
-    //   description: 'login授权获取的token',
-    //   in: 'header'
-    // })
+    .addBearerAuth({
+      type: 'apiKey',
+      name: 'Authorization',
+      description: 'login授权获取的token',
+      in: 'header',
+    })
     .setTitle('mini-machine APIs')
     .setDescription('为小程序所做后端api接口')
     .setVersion('v1')

@@ -8,9 +8,9 @@ import { Role } from './entities/role.entity';
 /*
  * @Author: Ma Jade
  * @Date: 2022-05-28 21:46:14
- * @LastEditTime: 2022-05-28 21:46:16
+ * @LastEditTime: 2022-05-30 00:16:35
  * @LastEditors: Ma Jade
- * @FilePath: /mini-machine/src/auth/role/role.repository.ts
+ * @FilePath: /mini-machine/src/auth/role/roles.repository.ts
  */
 @EntityRepository(Role)
 export class RolesRepository extends Repository<Role> {
@@ -19,7 +19,7 @@ export class RolesRepository extends Repository<Role> {
   async getRoles(filter: GetRoleFilterDto, user: User): Promise<Role[]> {
     const { search } = filter;
     const query = this.createQueryBuilder('role');
-    query.where({ user });
+    // query.where({ user });
 
     if (search) {
       query.andWhere(`(LOWER(role.Name) LIKE LOWER(:search))`, {

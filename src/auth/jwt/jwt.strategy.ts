@@ -4,14 +4,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { User } from 'src/users/entities/user.entity';
 import { UsersRepository } from 'src/users/users.repository';
+import { jwtConstants } from '../constants';
 import { JwtPayload } from './jwt-payload-interface';
 
 /*
  * @Author: Ma Jade
  * @Date: 2022-05-28 22:26:13
- * @LastEditTime: 2022-05-28 23:27:35
+ * @LastEditTime: 2022-05-30 00:10:33
  * @LastEditors: Ma Jade
- * @FilePath: /mini-machine/src/auth/jwt/jwt-strategy.ts
+ * @FilePath: /mini-machine/src/auth/jwt/jwt.strategy.ts
  */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -19,7 +20,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
   ) {
     super({
-      secretOrKey: 'topSecret1',
+      secretOrKey: jwtConstants.secret, // 'topSecret1',
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
