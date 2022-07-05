@@ -37,11 +37,11 @@ export class RolesRepository extends Repository<Role> {
   }
 
   async createRole(createDto: CreateRoleDto, user: User): Promise<Role> {
-    const { Name } = createDto;
+    const { name } = createDto;
 
     const role = this.create({
-      Name,
-      CreatedBy: user.Id,
+      name,
+      createdBy: user.id,
     });
 
     await this.save(role);

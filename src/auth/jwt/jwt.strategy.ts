@@ -10,7 +10,7 @@ import { JwtPayload } from './jwt-payload-interface';
 /*
  * @Author: Ma Jade
  * @Date: 2022-05-28 22:26:13
- * @LastEditTime: 2022-05-30 00:10:33
+ * @LastEditTime: 2022-07-05 15:33:05
  * @LastEditors: Ma Jade
  * @FilePath: /mini-machine/src/auth/jwt/jwt.strategy.ts
  */
@@ -26,8 +26,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: JwtPayload): Promise<User> {
-    const { Username } = payload;
-    const user = await this.usersRepository.findOne({ Username });
+    const { username } = payload;
+    const user = await this.usersRepository.findOne({ username });
     if (!user) {
       throw new UnauthorizedException();
     }

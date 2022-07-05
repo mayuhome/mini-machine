@@ -1,7 +1,7 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-02-28 13:31:00
- * @LastEditTime: 2022-05-29 23:58:13
+ * @LastEditTime: 2022-07-05 15:05:50
  * @LastEditors: Ma Jade
  * @FilePath: /mini-machine/src/main.ts
  */
@@ -21,7 +21,7 @@ async function bootstrap() {
 
   // add swagger module
   const options = new DocumentBuilder()
-    .setContact('jade', '', 'mayuhome@163.com')
+    // .setContact('jade', '', 'mayuhome@163.com')
     .addBearerAuth({
       type: 'apiKey',
       name: 'Authorization',
@@ -31,11 +31,12 @@ async function bootstrap() {
     .setTitle('mini-machine APIs')
     .setDescription('为小程序所做后端api接口')
     .setVersion('v1')
+    .setExternalDoc('swagger json', '/api-json')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
-
+  app.enableCors();
   await app.listen(3000);
 }
 

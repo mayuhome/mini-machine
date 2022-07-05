@@ -2,7 +2,7 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-02 11:05:40
- * @LastEditTime: 2022-05-30 00:05:54
+ * @LastEditTime: 2022-07-05 15:35:33
  * @LastEditors: Ma Jade
  * @FilePath: /mini-machine/src/auth/auth.module.ts
  */
@@ -24,7 +24,7 @@ import { UsersRepository } from 'src/users/users.repository';
     PassportModule.register({ defaultStrategy: 'jwt'}),
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '60h' },
     }),
   ],
   providers: [AuthService, JwtStrategy],

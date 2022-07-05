@@ -5,4 +5,8 @@
  * @LastEditors: Ma Jade
  * @FilePath: /backend/mini-machine/src/machines/dto/create-machine.dto.ts
  */
-export class CreateMachineDto {}
+export class CreateMachineDto {
+    name: string;
+    sn: string;
+    image?: string;
+}

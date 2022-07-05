@@ -1,26 +1,29 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:41:28
- * @LastEditTime: 2022-05-28 23:59:38
+ * @LastEditTime: 2022-07-05 11:25:36
  * @LastEditors: Ma Jade
  * @FilePath: /mini-machine/src/users/entities/user.entity.ts
  */
 import { Role } from 'src/auth/role/entities/role.entity';
 import { EntityBase } from 'src/models/base';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
 export class User extends EntityBase {
   @PrimaryGeneratedColumn('uuid')
-  Id: string;
+  id: string;
   @Column({ length: 20 })
-  Username: string;
+  @Index({ unique: true })
+  username: string;
   @Column({ length: 128, default: '' })
-  OpenId?: string;
+  @Index({ unique: true })
+  openId?: string;
   @Column({ length: 64, default: '' })
-  Email?: string;
+  @Index({ unique: true })
+  email?: string;
   @Column()
-  Password: string;
+  password: string;
   @ManyToOne(() => Role)
-  Roles: Role[];
+  roles: Role[];
 }

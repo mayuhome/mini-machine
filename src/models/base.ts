@@ -1,19 +1,28 @@
-import { Column } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 10:01:07
- * @LastEditTime: 2022-03-01 14:36:26
+ * @LastEditTime: 2022-07-04 17:01:16
  * @LastEditors: Ma Jade
- * @FilePath: /backend/mini-machine/src/models/base.ts
+ * @FilePath: /mini-machine/src/models/base.ts
  */
 export class EntityBase {
-  @Column({ default: '' })
-  CreatedBy?: string;
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  CreatedTime: Date;
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  UpdatedTime: Date;
   @Column({ default: true })
-  IsActive: boolean;
+  isActive: boolean;
+  @Column({ default: '' })
+  createdBy?: string;
+  @Column({ default: '' })
+  updatedBy?: string;
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdTime: Date;
+  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  updatedTime: Date;
+  @DeleteDateColumn({ type: 'timestamp' })
+  deletedTime?: Date;
 }

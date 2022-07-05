@@ -2,9 +2,9 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:41:28
- * @LastEditTime: 2022-03-01 13:32:32
+ * @LastEditTime: 2022-07-04 17:03:05
  * @LastEditors: Ma Jade
- * @FilePath: /backend/mini-machine/src/users/dto/create-user.dto.ts
+ * @FilePath: /mini-machine/src/users/dto/create-user.dto.ts
  */
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
@@ -14,11 +14,11 @@ export class CreateUserDto {
     @IsString()
     @MinLength(2)
     @MaxLength(20)
-    Username: string;
+    username: string;
     @ApiPropertyOptional({description: '微信OpenId'})
-    OpenId?: string;
+    openId?: string;
     @ApiPropertyOptional({description: '邮箱地址'})
-    Email?: string;
+    email?: string;
     @ApiProperty({description: '用户密码'})
     @IsString()
     @MinLength(6, { message: '密码长度不能少于6位'})
@@ -26,5 +26,5 @@ export class CreateUserDto {
     @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/, {
         message: 'password is too weak',
       })
-    Password: string;
+    password: string;
 }

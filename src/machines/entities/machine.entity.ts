@@ -1,21 +1,23 @@
 /*
  * @Author: Ma Jade
  * @Date: 2022-03-01 11:12:58
- * @LastEditTime: 2022-03-01 14:35:49
+ * @LastEditTime: 2022-07-05 14:08:18
  * @LastEditors: Ma Jade
- * @FilePath: /backend/mini-machine/src/machines/entities/machine.entity.ts
+ * @FilePath: /mini-machine/src/machines/entities/machine.entity.ts
  */
 import { EntityBase } from 'src/models/base';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { EStatus } from '../dto/status.enum';
 
 @Entity()
 export class Machine extends EntityBase {
   @PrimaryGeneratedColumn('uuid')
-  Id: string;
+  id: string;
   @Column()
-  Name: string;
+  @Index({ unique: true })
+  name: string;
   @Column()
-  SN: string;
-  @Column()
-  Status: number;
+  sn: string;
+  @Column({ default: EStatus.Offline })
+  status: number;
 }

@@ -31,10 +31,10 @@ export class AuthService {
 
  /* 登录信息 */
  async signIn(body: SignInDto): Promise<{ accessToken: string}>{
-    const { Username, Password } = body;
-    const user = await this.usersRepository.findOne({ Username });
-    if(user && await bcrypt.compare(Password, user.Password)){
-      const payload: JwtPayload = { Username };
+    const { username, password } = body;
+    const user = await this.usersRepository.findOne({ username });
+    if(user && await bcrypt.compare(password, user.password)){
+      const payload: JwtPayload = { username };
       const accessToken = this.jwtServ.sign(payload);
       return { accessToken };
     }else{
